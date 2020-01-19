@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config build/webpack.build.js",
+    "build": "webpack --config build/webpack.dev.js",
     "dev": "webpack-dev-server --open --config build/webpack.dev.js",
     "sass":"sass ./src/*.scss ./dist/*.css",
     "start":"npm run dev && npm run sass",

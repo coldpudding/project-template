@@ -1,7 +1,9 @@
 const path = require('path');
-const htmlWebpackPlugin = require("html-webpack-plugin");
-const extractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const SpritesmithPlugin = require('webpack-spritesmith');
+const { CleanWebpackPlugin }  = require('clean-webpack-plugin');
+
 
 module.exports = {
   //入口文件路径
@@ -29,7 +31,7 @@ module.exports = {
       //解析sass文件
       {
         test: /\.scss$/,
-        use: extractTextWebpackPlugin.extract({
+        use: ExtractTextWebpackPlugin.extract({
           fallback: 'style-loader',
           use: ['css-loader', 'sass-loader']
         })
@@ -39,11 +41,12 @@ module.exports = {
   //插件
   plugins: [
     //输出index.html文件
-    new htmlWebpackPlugin({
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
       template: './index.html'
     }),
     //输出style.css文件
-    new extractTextWebpackPlugin('style.css'),
+    new ExtractTextWebpackPlugin('style.css'),
     //输出雪碧图
     new SpritesmithPlugin({
       //需要整合的小图标的文件夹和格式           

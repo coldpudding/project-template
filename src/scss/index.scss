@@ -3,18 +3,11 @@
 @import 'utils/include';
 @import 'sprite.css';
 
-
 .rebuild-wrap {
     @extend %absolute;
     left: 50%;
     top: 50%;
     @include translate();
-}
-
-
-.rebuild-title {
-    font-size: 60px;
-    text-align: center;
 }
 
 .rebuild-subtitle {

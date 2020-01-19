@@ -16,23 +16,11 @@ To change `display` (e.g. `display: inline-block;`), we suggest using a common C
 // HTML
 <i class="icon icon-home"></i>
 */
-.icon-aa {
-  background-image: url(da19bc376ab28ac6e7be88f0f73e2f3d.png);
+.icon-logo {
+  background-image: url(159c40bf8b4ee91f72e7f3d0d268aceb.png);
   background-position: 0px 0px;
-  width: 75px;
-  height: 15px;
-}
-.icon-bb {
-  background-image: url(da19bc376ab28ac6e7be88f0f73e2f3d.png);
-  background-position: -85px 0px;
-  width: 75px;
-  height: 15px;
-}
-.icon-dd {
-  background-image: url(da19bc376ab28ac6e7be88f0f73e2f3d.png);
-  background-position: -170px 0px;
-  width: 75px;
-  height: 15px;
+  width: 600px;
+  height: 150px;
 }
 /**
 * 
@@ -429,6 +417,19 @@ input::-ms-reveal {
 * 
 * 
 */
-body {
-  font-size: 40px;
-  color: #000; }
+.rebuild-wrap {
+  position: absolute; }
+
+.rebuild-wrap {
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); }
+
+.rebuild-subtitle {
+  font-size: 20px;
+  color: #6a8bad;
+  text-align: center; }
