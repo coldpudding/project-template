@@ -1,8 +1,25 @@
-@import 'common.scss';
+@import 'base/reset';
+@import 'base/variables';
+@import 'utils/include';
 @import 'sprite.css';
 
-body{
-    background: $bgColor;
-    font-size:$size;
-    color:$color;
+
+.rebuild-wrap {
+    @extend %absolute;
+    left: 50%;
+    top: 50%;
+    @include translate();
+}
+
+
+.rebuild-title {
+    font-size: 60px;
+    text-align: center;
+}
+
+.rebuild-subtitle {
+    font-size: 20px;
+    color: #6a8bad;
+    text-align: center;
+
 }

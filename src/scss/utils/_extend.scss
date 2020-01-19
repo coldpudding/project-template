@@ -1,0 +1,87 @@
+/**
+* 
+* 
+*========================================================================== 
+* extend scss
+* include @import this file
+*==========================================================================
+* 
+* 
+*/
+
+
+%block {
+  display: block;
+}
+
+%inline-block {
+  display: inline-block;
+}
+
+%inline {
+  display: inline;
+}
+
+%none {
+  display: none;
+}
+
+%box {
+  display: -webkit-box;
+  display: box;
+}
+
+%table {
+  display: table;
+}
+
+%table-cell {
+  display: table-cell;
+}
+
+%absolute {
+  position: absolute;
+}
+
+%relative {
+  position: relative;
+}
+
+%fixed {
+  position: fixed;
+}
+
+%sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+%content {
+  content: '';
+  @extend %block;
+}
+
+%clearfix {
+  clear: both;
+  height: auto;
+
+  &:after,
+  &:before {
+    @extend %content;
+    clear: both;
+    overflow: hidden;
+  }
+}
+
+%left {
+  float: left;
+}
+
+%right {
+  float: right;
+}
+
+%border-box {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}

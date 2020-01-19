@@ -1,0 +1,24 @@
+/**
+* 
+* 
+*========================================================================== 
+* variables scss
+* imgUrl , base @import this file
+*==========================================================================
+* 
+* 
+*/
+
+$switch:true;
+
+@if $switch==true {
+    //you online imgUrl
+    $img: "";
+    @debug $img;
+}
+
+@else {
+    //local imgUrl
+    $img: "../../../static/";
+    @debug $img;
+}

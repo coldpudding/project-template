@@ -1,0 +1,89 @@
+/**
+* 
+* 
+*========================================================================== 
+* include scss
+* include @import extend file
+*==========================================================================
+* 
+* 
+*/
+
+@import "extend";
+
+@mixin translate($x:-50%, $y:-50%) {
+  -webkit-transform: translate($x, $y);
+  -moz-transform: translate($x, $y);
+  -ms-transform: translate($x, $y);
+  -o-transform: translate($x, $y);
+  transform: translate($x, $y);
+}
+
+@mixin translate3d($x:0, $y:0, $z:0) {
+  -webkit-transform: translate3d($x, $y, $z);
+  -moz-transform: translate3d($x, $y, $z);
+  -ms-transform: translate3d($x, $y, $z);
+  -o-transform: translate3d($x, $y, $z);
+  transform: translate3d($x, $y, $z);
+}
+
+@mixin transition($type:all, $time:.15, $way:linear, $delay:0) {
+  -webkit-transition: $type $time + s $way $delay + s;
+  -moz-transition: $type $time + s $way $delay + s;
+  -ms-transition: $type $time + s $way $delay + s;
+  -o-transition: $type $time + s $way $delay + s;
+  transition: $type $time + s $way $delay + s;
+}
+
+@mixin box-align($position:center) {
+  -webkit-box-align: $position;
+  box-align: $position;
+}
+
+@mixin box-pack($position:center) {
+  -webkit-box-pack: $position;
+  box-pack: $position;
+}
+
+@mixin box-flex($num:1) {
+  -webkit-box-flex: $num;
+  -moz-box-flex: $num;
+  -ms-box-flex: $num;
+  -o-box-flex: $num;
+  box-flex: $num;
+}
+
+@mixin border-radius($num:50%) {
+  -webkit-border-radius: $num;
+  -moz-border-radius: $num;
+  -ms-border-radius: $num;
+  -o-border-radius: $num;
+  border-radius: $num;
+}
+
+@mixin sprites($x:0, $y:0) {
+  background: {
+    //image: url($img + 'sprites.png');
+    image: url($img + 'sprites_new.png');
+    repeat: no-repeat;
+    position: $x $y;
+    size: 5.8rem 5.4rem;
+  }
+}
+
+@mixin text-lines($num:1) {
+  @if $num>=2 {
+    @extend %box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $num;
+    overflow: hidden;
+  } @else {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@function gap($distance, $font-sizeTop,$font-sizeBottm:0) {
+  @return abs($distance - ($font-sizeTop * 1.5 / 2 - $font-sizeTop / 2) - ($font-sizeBottm * 1.5 / 2 - $font-sizeBottm / 2));
+}

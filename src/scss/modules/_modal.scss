@@ -1,0 +1,313 @@
+//==========================================================================
+// modal scss
+//==========================================================================
+
+/**
+ * add submit btn color parameter // 确定按钮
+ */
+$btnSubmit-color:#fff; //'确定按钮文字' 颜色
+$btnSubmit-background:#c13434; //'确定按钮背景' 颜色
+$btnSubmit-border-show:true; //'确定按钮边框' 要不要显示
+$btnSubmit-border:1px solid #d0b89b; //'确定按钮边框' 
+
+/**
+ * add cancel btn color parameter  // 取消按钮
+ */
+$btnCancel-color:#d5bfa1; //'取消按钮背景' 颜色
+$btnCancel-background:rgba(0, 0, 0, 0); //'取消按钮背景' 颜色
+$btnCancel-border-show:true; //'确定按钮边框' 要不要显示
+$btnCancel-border:1px solid #d0b89b; //'取消按钮边框' 
+
+/**
+ * add modal background parameter  // 弹窗
+ */
+$modalContent-background:#e8ded5;
+
+/**
+ * add modal background parameter  // 弹窗 title
+ */
+$modalHeader-background:#942525; //'弹窗title' 背景颜色
+$modalHeader-color:#ffaa48; //'弹窗title' 文字颜色
+
+/**
+* add record list title parameter  // 获奖记录表格
+*/
+$recordTable-thead-background:#c13434; //'获奖记录表格 title' 背景颜色
+$recordTable-thead-color:#353f54; //'获奖记录表格 title' 文字颜色
+$recordTable-border-color:#c13434; //'获奖记录表格 border' 边框颜色
+
+$recordTable-tbody-contentTxt:#353f54; //'获奖记录表格' 文字颜色
+$recordTable-tbody-addressLink:#666; //'获奖记录表格' 文字颜色
+
+/**
+* add toast parameter  // toast
+*/
+$toast-background:#ffe9cc; //'toast'  背景颜色
+$toast-color:#7d181e; //'toast text'  文字颜色
+
+/**
+ * add btn style
+ */
+.btnSubmit {
+  @extend %inline-block;
+  padding: .1rem .4rem;
+  @include border-radius(.5rem);
+
+  @if ($btnSubmit-border-show) {
+    border: $btnSubmit-border;
+  }
+
+  color: $btnSubmit-color;
+  background: $btnSubmit-background;
+}
+
+.btnCancel {
+  @if ($btnCancel-border-show) {
+    border: $btnSubmit-border;
+  }
+
+  color: $btnCancel-color;
+  background: $btnCancel-background;
+}
+
+.modalBody {
+  padding: .5rem 0;
+}
+
+.modalText-center {
+  text-align: center;
+  font-size: .26rem;
+}
+
+.modal {
+  height: 100%;
+  width: 100%;
+  @extend %fixed;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, .5);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 100;
+  @include transition(all, .15, linear, 0);
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.modalContent {
+  width: 6.88rem;
+  padding: .14rem .22rem .4rem;
+  @extend %absolute;
+  @include border-radius(.1rem);
+  // overflow: hidden;
+  left: 50%;
+  top: 50%;
+  @include translate();
+  background: $modalContent-background;
+  @extend %border-box;
+  -webkit-overflow-scrolling : touch;
+}
+
+.modalHeader {
+  padding: .12rem 0;
+  background: $modalHeader-background;
+  text-align: center;
+  font-size: .3rem;
+  font-weight: bold;
+  color: $modalHeader-color;
+}
+
+.addressLayout {
+  margin-top: .5rem;
+  padding: 0 .4rem .46rem;
+}
+
+.bodyFooter {
+  text-align: center;
+}
+
+.modalBtn {
+  padding: .05rem .4rem 0;
+  height: .58rem;
+  margin: 0 .3rem;
+  text-align: center;
+  font-size: .28rem;
+  @include border-radius(.1rem);
+  @extend %inline-block;
+  @extend %border-box;
+}
+
+.modalText-center {
+  text-align: center;
+  font-size: .26rem;
+}
+
+.recordTable {
+  text-align: center;
+  width: 90%;
+  margin: .4rem auto 0;
+  border-spacing: 0;
+
+  thead {
+    // background: $recordTable-thead-background;
+    font-size: .28rem;
+    color: $recordTable-thead-color;
+    font-weight: bold;
+
+    td {
+      padding: .14rem 0;
+      @include text-lines();
+    }
+  }
+
+  td {
+    border-collapse: collapse;
+    // border: 1px solid $recordTable-border-color;
+  }
+
+  tbody {
+    font-size: .24rem;
+
+    tr {
+      &:first-child {
+        td {
+          padding-top: .2rem;
+        }
+      }
+    }
+
+    td {
+      padding: .1rem;
+      color: $recordTable-tbody-contentTxt;
+    }
+  }
+
+  td {
+    width: 33.333%;
+    border-spacing: 0;
+  }
+}
+
+.tableAction {
+  margin-top: .46rem;
+  font-size: .22rem;
+  text-align: center;
+  color: #666666;
+  margin-bottom: .2rem;
+
+  span {
+    @extend %inline-block;
+    margin: 0 .1rem;
+  }
+
+  a {
+    color: #666666;
+    padding: .2rem .1rem;
+  }
+}
+
+.addressItems-name {
+  @extend %inline-block;
+  margin-right: .2rem;
+}
+
+.addressItems-input {
+  @include box-flex();
+
+  input {
+    &:focus {
+      border-color: #ffcc21;
+      outline: none;
+    }
+
+    @extend %border-box;
+    @extend %block;
+    height: .48rem;
+    padding: 0 .1rem;
+    border: 1px solid #e0e0e0;
+    width: 100%;
+  }
+
+  .addressItems-input {
+    margin-top: .2rem;
+  }
+}
+
+.addressItems-area {
+  @extend %box;
+
+  input {
+    @include box-flex();
+  }
+
+  span {
+    @extend %inline-block;
+    margin: 0 .1rem;
+  }
+}
+
+
+.addressItems {
+  @extend %box;
+
+  &+.addressItems {
+    margin-top: .3rem;
+  }
+}
+
+
+.toast {
+  padding: .2rem .4rem;
+  background: $toast-background;
+  font-size: .3rem;
+  color: $toast-color;
+  @extend %absolute;
+  font-weight: bold;
+  left: 50%;
+  top: 50%;
+  @include translate();
+  @include border-radius(.1rem);
+}
+
+
+.modalClose {
+  @extend %absolute;
+  right: 50%;
+  bottom: -1rem;
+  @include translate(50%, 0);
+}
+
+.modalLink {
+  font-size: .24rem;
+  color: #d4b57d;
+  text-decoration: underline;
+}
+
+.sendTxt {
+  font-size: .2rem;
+  color: #666666;
+  text-align: center;
+  margin-top: .1rem;
+}
+
+.addressLink {
+  color: $recordTable-tbody-addressLink;
+  text-decoration: underline;
+}
+
+.addressItems-input {
+  .douNums {
+    height: .54rem;
+    width: 2.5rem;
+    text-align: center;
+    font-size: .3rem;
+    border: 1px solid #000;
+    @include border-radius(.1rem);
+    margin: -.5rem auto 0;
+  }
+}
+
+
