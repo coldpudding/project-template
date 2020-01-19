@@ -1,0 +1,27 @@
+{
+  "name": "biuxbiu",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "pack": "webpack --config webpack.new.js",
+    "dev": "webpack-dev-server --open --config build/webpack.base.js",
+    "sass":"sass ./src/*.scss ./dist/*.css",
+    "start":"npm run dev && npm run sass",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "biuxbiu",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "css-loader": "^3.4.2",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^1.1.2",
+    "webpack-cli": "^3.3.10"
+  },
+"repository":{
+	"type":"git",
+	"url":"git+https://github.com/biuxbiu/biuxbiu.git"
+
+}
+}
