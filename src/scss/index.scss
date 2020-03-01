@@ -1,7 +1,7 @@
 @import 'base/reset';
 @import 'base/variables';
 @import 'utils/include';
-@import 'sprite.css';
+@import '~sprite.scss';
 
 .rebuild-wrap {
     @extend %absolute;
@@ -10,9 +10,12 @@
     @include translate();
 }
 
+.rebuild-logo {
+    @include sprite($logo);
+}
+
 .rebuild-subtitle {
     font-size: 20px;
     color: #6a8bad;
     text-align: center;
-
 }

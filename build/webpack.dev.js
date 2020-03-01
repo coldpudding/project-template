@@ -26,7 +26,12 @@ module.exports = {
       //解释图片文件
       {
         test: /\.(png|jpg|svg|gif)$/,
-        use: 'file-loader'
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[hash:8].[ext]'
+          }
+        }
       },
       //解析sass文件
       {
@@ -35,7 +40,10 @@ module.exports = {
       }
     ]
   },
-  //插件
+  resolve: {
+    modules: ["node_modules", "generated"]
+  },
+  // 插件
   plugins: [
     //输出index.html文件
     new CleanWebpackPlugin(),
@@ -51,13 +59,13 @@ module.exports = {
       },
       //输出雪碧图文件及样式文件            
       target: {
-        //下面的路径，根据自己的实际路径配置
-        image: path.resolve(__dirname, '../static/sprite.png'),
-        css: path.resolve(__dirname, '../src/scss/sprite.css')
+        // 下面的路径，根据自己的实际路径配置
+        image: path.resolve(__dirname, '../generated/sprite.png'),
+        css: path.resolve(__dirname, '../generated/sprite.scss')
       },
       //样式文件中调用雪碧图地址写法            
       apiOptions: {
-        cssImageRef: '../../static/sprite.png',
+        cssImageRef: '~sprite.png',
       },
       //雪碧图排列方式和间距
       spritesmithOptions: {
