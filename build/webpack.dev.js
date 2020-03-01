@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SpritesmithPlugin = require('webpack-spritesmith');
 const { CleanWebpackPlugin }  = require('clean-webpack-plugin');
 
@@ -8,7 +8,7 @@ const { CleanWebpackPlugin }  = require('clean-webpack-plugin');
 module.exports = {
   //入口文件路径
   entry: {
-    index: path.resolve(__dirname, "../src/index.js"),
+    index: path.resolve(__dirname, "../src/index.js")
   },
   //输出文件路径
   output: {
@@ -21,7 +21,7 @@ module.exports = {
       //解释css文件
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
       //解释图片文件
       {
@@ -31,10 +31,7 @@ module.exports = {
       //解析sass文件
       {
         test: /\.scss$/,
-        use: ExtractTextWebpackPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
-        })
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
       }
     ]
   },
@@ -45,9 +42,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './index.html'
     }),
-    //输出style.css文件
-    new ExtractTextWebpackPlugin('style.css'),
-    //输出雪碧图
+    // 输出雪碧图
     new SpritesmithPlugin({
       //需要整合的小图标的文件夹和格式           
       src: {
@@ -69,6 +64,10 @@ module.exports = {
         algorithm: 'left-right',
         padding: 6
       }
-    })
+    }),
+    // 输出style.css文件
+    new MiniCssExtractPlugin({
+      filename: "style.css",
+    }),
   ]
 }
