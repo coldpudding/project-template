@@ -6,6 +6,7 @@ const { CleanWebpackPlugin }  = require('clean-webpack-plugin');
 
 
 module.exports = {
+  mode: 'development',
   //入口文件路径
   entry: {
     index: path.resolve(__dirname, "../src/index.js")

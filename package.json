@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config build/webpack.dev.js",
-    "dev": "webpack-dev-server --open --config build/webpack.dev.js",
+    "build": "node build/build.js",
+    "dev": "webpack-dev-server --open --config build/webpack.dev.js --mode development",
     "sass": "sass ./src/*.scss ./dist/*.css",
     "start": "npm run dev && npm run sass",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,8 +13,8 @@
   "author": "biuxbiu",
   "license": "ISC",
   "description": "",
-"devDependencies": {
-    "biuxbiu": "0.0.1",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.4.2",
     "file-loader": "^5.0.2",
     "html-webpack-plugin": "^3.2.0",
@@ -22,14 +22,16 @@
     "node-sass": "^4.13.0",
     "sass-loader": "^7.3.1",
     "style-loader": "^1.1.2",
-    "webpack-dev-server": "^3.10.1",
-    "webpack-spritesmith": "^1.1.0",
-    "clean-webpack-plugin": "^3.0.0",
     "webpack": "^4.41.6",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.1",
+    "webpack-spritesmith": "^1.1.0"
   },
-  "repository":{
-    "type":"git",
-    "url":"https://github.com/biuxbiu/project-template.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/biuxbiu/project-template.git"
+  },
+  "dependencies": {
+    "ora": "^4.0.3"
   }
 }
