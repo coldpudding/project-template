@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SpritesmithPlugin = require('webpack-spritesmith');
 const { CleanWebpackPlugin }  = require('clean-webpack-plugin');
-
+const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -50,6 +50,11 @@ module.exports = {
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './index.html'
+    }),
+    new OptimizeCSSPlugin({
+      cssProcessorOptions: {
+        safe: true
+      }
     }),
     // 输出雪碧图
     new SpritesmithPlugin({
