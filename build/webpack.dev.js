@@ -62,7 +62,18 @@ module.exports = {
       target: {
         // 下面的路径，根据自己的实际路径配置
         image: path.resolve(__dirname, '../generated/sprite.png'),
-        css: path.resolve(__dirname, '../generated/sprite.scss')
+        css: [
+          [ path.resolve(__dirname, '../generated/sprite.scss'), {
+            format: 'customScss',
+            formatOpts: {
+              outputClass: true,
+              classPrefix: 'icon-'
+            }
+          }]
+        ]
+      },
+      customTemplates: {
+        'customScss': path.resolve(__dirname, '../spritesheet-templates/scss_template.handlebars')
       },
       //样式文件中调用雪碧图地址写法            
       apiOptions: {

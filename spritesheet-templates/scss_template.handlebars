@@ -1,0 +1,25 @@
+{
+  // Default options
+  'functions': true,
+  'outputClass': false,
+  'variableNameTransforms': ['dasherize']
+}
+
+{{#extend "scss"}}
+{{#content "spritesheet-functions"}}
+{{#if options.functions}}
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .{{options.classPrefix}}#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}
+{{/if}}
+{{/content}}
+{{/extend}}
+
+{{#if options.outputClass}}
+@include sprites($spritesheet-sprites);
+{{/if}}
